@@ -112,15 +112,18 @@ public class Main {
 
     public static void resolver(Pilha p1, Pilha p2, Pilha p3) {
         // Passa o primeiro para p2
+        System.out.println("mover " + p1.getTopo() + " para pilha 2");
         p2.inserir(p1.remove());
         passos++;
         // Compara o topo de p1 com p2
         while (p1.getTopo() != null) {
             // Se for maior inserimos na pilha 2
             if (p1.getTopo() >= p2.getTopo()) {
+                System.out.println("mover " + p1.getTopo() + " para pilha 2");
                 p2.inserir(p1.remove());
             } else {
                 // Senão vai para p3
+                System.out.println("mover " + p1.getTopo() + " para pilha 3");
                 p3.inserir(p1.remove());
             }
             passos++;
@@ -128,6 +131,7 @@ public class Main {
 
         // Passa todos de p2 para p1 (maiores)
         while (p2.getTopo() != null) {
+            System.out.println("mover " + p2.getTopo() + " para pilha 1");
             p1.inserir(p2.remove());
             passos++;
         }
@@ -136,6 +140,7 @@ public class Main {
         while (p3.getTopo() != null) {
             // Se ele for menor do que topo de p1, pode empilhar
             if (p3.getTopo() <= p1.getTopo()) {
+                System.out.println("mover " + p3.getTopo() + " para pilha 1");
                 p1.inserir(p3.remove());
                 passos++;
             } else {
@@ -144,14 +149,17 @@ public class Main {
                 // Vamos passar o topo de p1 para p2
                 // Até achar a posição para o topo p3
                 while (p1.getTopo() < p3.getTopo()) {
+                    System.out.println("mover " + p1.getTopo() + " para pilha 2");
                     p2.inserir(p1.remove());
                     passos++;
                 }
                 // Finalmente, inserimos o p3
+                System.out.println("mover " + p3.getTopo() + " para pilha 1");
                 p1.inserir(p3.remove());
                 passos++;
                 // Pegamos os que passamos para p2 e voltamos para p1
                 while (p2.getTopo() != null) {
+                    System.out.println("mover " + p2.getTopo() + " para pilha 1");
                     p1.inserir(p2.remove());
                     passos++;
                 }
@@ -162,6 +170,7 @@ public class Main {
         // Se a ordenacao for crescente, basta passar todos de p1 para p2
         if (p1.getTipoOrdenacao() == "crescente") {
             while (p1.getTopo() != null) {
+                System.out.println("mover " + p1.getTopo() + " para pilha 2");
                 p2.inserir(p1.remove());
                 passos++;
             }
