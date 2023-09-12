@@ -111,6 +111,17 @@ public class Main {
     public static int passos = 0;
 
     public static void resolver(Pilha p1, Pilha p2, Pilha p3) {
+        // Se o usuário tiver movido elementos para alguma das pilhas
+        if (p2.getTopo() != null) {
+            System.out.println("mover " + p2.getTopo() + " para pilha 1");
+            p1.inserir(p2.remove());
+        }
+
+        if (p3.getTopo() != null) {
+            System.out.println("mover " + p3.getTopo() + " para pilha 1");
+            p1.inserir(p3.remove());
+        }
+
         // Passa o primeiro para p2
         System.out.println("mover " + p1.getTopo() + " para pilha 2");
         p2.inserir(p1.remove());
